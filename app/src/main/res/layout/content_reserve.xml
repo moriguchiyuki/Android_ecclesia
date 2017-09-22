@@ -5,344 +5,170 @@
     android:id="@+id/content_reserve"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="1dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.yuichi_oba.ecclesia.activity.ReserveActivity"
     tools:showIn="@layout/app_bar_reserve">
 
 
     <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/br_re_confirm">
 
-        android:layout_width="395dp"
-        android:layout_height="587dp"
-        android:fillViewport="true">
-        <!--w368
-            h495-->
-        <LinearLayout
-
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/stroke"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp">
-            <!--android:weightSum="3"-->
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
+            <view
+                class="com.example.yuichi_oba.ecclesia.view.ReserveView"
+                id="@+id/view3"
+                layout_width="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="730dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true" />
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/txt_re_shinseisya"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/bt_re_eTime"
+                android:layout_alignStart="@+id/bt_re_eDay"
+                android:layout_below="@+id/bt_re_eTime"
+                android:layout_marginEnd="7dp"
+                android:layout_marginTop="28dp"
+                android:text="aaa"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="bold|italic" />
+
+            <Button
+                android:id="@+id/bt_re_sDay"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/sp_re_purpose"
+                android:layout_below="@+id/sp_re_purpose"
+                android:layout_marginTop="15dp"
+                android:text="開始日時" />
+
+            <Button
+                android:id="@+id/bt_re_eDay"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/bt_re_sDay"
+                android:layout_below="@+id/bt_re_sDay"
+                android:layout_marginTop="22dp"
+                android:text="終了日時" />
+
+            <Button
+                android:id="@+id/bt_re_sTime"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/sp_re_purpose"
+                android:layout_alignTop="@+id/bt_re_sDay"
+                android:text="開始時刻" />
+
+            <Button
+                android:id="@+id/bt_re_eTime"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/bt_re_eDay"
+                android:layout_alignEnd="@+id/bt_re_sTime"
+                android:text="終了時刻" />
+
+            <Spinner
+                android:id="@+id/sp_re_purpose"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/stroke"
-                android:orientation="horizontal"
-                android:padding="5dp"
-                tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="8dp">
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/ed_gaiyou"
+                android:layout_alignStart="@+id/ed_gaiyou"
+                android:layout_below="@+id/ed_gaiyou"
+                android:layout_marginTop="0dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-
-                    android:text="概要"
-                    android:textSize="20dp" />
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:ems="10"
-                    android:id="@+id/editText"
-                    android:layout_weight="1"
-                    android:hint="空欄でも可"
-                    android:textAlignment="center" />
-
-            </LinearLayout>
-            <!--お試し線-->
-            <!--<View-->
-            <!--android:layout_width="fill_parent"-->
-            <!--android:layout_height="1dp"-->
-            <!--android:background="@android:color/darker_gray" />-->
-
-            <LinearLayout
+            <Spinner
+                android:id="@+id/sp_re_member"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/stroke"
-                android:orientation="horizontal"
-                android:padding="10dp"
-                tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="8dp">
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/bt_re_eTime"
+                android:layout_below="@+id/txt_re_shinseisya"
+                android:layout_marginTop="41dp"
+                android:layout_alignStart="@+id/txt_re_shinseisya" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="目的"
-                    android:textSize="20dp" />
+            <EditText
+                android:id="@+id/ed_gaiyou"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="14dp"
+                android:ems="10"
+                android:inputType="textPersonName" />
 
-                <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/spinner4"
-                    android:entries="@array/mokuteki" />
+            <Switch
+                android:id="@+id/switch3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="37dp"
+                android:layout_below="@+id/sp_re_member"
+                android:layout_alignEnd="@+id/txt_re_shinseisya"
+                android:layout_marginEnd="84dp" />
 
-            </LinearLayout>
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/sp_re_member"
+                android:layout_alignStart="@+id/sp_re_member"
+                android:layout_below="@+id/switch3"
+                android:layout_marginTop="43dp"
+                android:textSize="24sp"
+                android:textStyle="bold|italic" />
 
-            <LinearLayout
+            <EditText
+                android:id="@+id/edi_fixture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/sp_room"
+                android:layout_below="@+id/sp_room"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/edi_remark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/edi_fixture"
+                android:layout_below="@+id/edi_fixture"
+                android:layout_marginTop="28dp"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <Spinner
+                android:id="@+id/sp_room"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/stroke"
-                android:orientation="horizontal"
-                android:padding="10dp"
-                tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="8dp">
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/textView12"
+                android:layout_alignStart="@+id/sp_re_member"
+                android:layout_below="@+id/textView12"
+                android:layout_marginTop="10dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="開始時間"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/txt_rd_startTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3.9"
-                    android:text="TextView"
-                    android:textAlignment="center" />
-
-                <Button
-                    android:text="strat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/button3"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/stroke"
-                android:orientation="horizontal"
-                android:padding="10dp"
-                tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="終了時間"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/txt_rd_endTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3.9"
-                    android:text="TextView"
-                    android:textAlignment="center" />
-
-                <Button
-                    android:text="end"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/button4"
-                    android:layout_weight="1" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/stroke"
-                android:orientation="horizontal"
-                android:padding="10dp"
-                tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="申請者"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/txt_rd_applicant"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.65"
-                    android:text="TextView"
-                    android:textAlignment="center" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/stroke"
-                android:orientation="horizontal"
-                android:padding="10dp"
-                tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.40"
-                    android:text="参加者"
-                    android:textSize="20dp" />
-
-                <Spinner
-                    android:layout_width="149dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/sp_rd_member" />
-
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.45" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/stroke"
-                android:orientation="horizontal"
-                android:padding="10dp"
-                tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="社内"
-                    android:textSize="20dp" />
-
-                <Switch
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/switch1"
-                    android:elevation="0dp" />
-
-                <TextView
-                    android:text="社外"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView6"
-                    android:layout_weight="1"
-                    android:textSize="20sp"
-                    android:textAlignment="center" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/stroke"
-                android:orientation="horizontal"
-                android:padding="10dp"
-                tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="希望会議室"
-                    android:textSize="20dp" />
-
-                <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/spinner"
-                    android:layout_weight="1"
-                    android:entries="@array/room" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/stroke"
-                android:orientation="horizontal"
-                android:padding="10dp"
-                tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="備品"
-                    android:textSize="20dp" />
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:text="Name"
-                    android:ems="10"
-                    android:id="@+id/editText2"
-                    android:layout_weight="1"
-                    android:textAlignment="center" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/stroke"
-                android:orientation="horizontal"
-                android:padding="10dp"
-                tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="備考"
-                    android:textSize="20dp" />
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:text="Name"
-                    android:ems="10"
-                    android:id="@+id/editText3"
-                    android:layout_weight="1"
-                    android:textAlignment="center" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <Button
-                    android:text="内容確認"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/button2"
-                    android:layout_weight="1"
-                    android:layout_margin="15dp" />
-            </LinearLayout>
-        </LinearLayout>
+        </RelativeLayout>
     </ScrollView>
 
+    <Button
+        android:id="@+id/bt_re_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:padding="0dp"
+        android:text="内容確認" />
 
 </RelativeLayout>

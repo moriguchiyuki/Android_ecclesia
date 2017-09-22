@@ -27,12 +27,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.yuichi_oba.ecclesia.R;
-//import com.example.yuichi_oba.ecclesia.dialog.AuthDialog;
 import com.example.yuichi_oba.ecclesia.tools.DB;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+
+//import com.example.yuichi_oba.ecclesia.dialog.AuthDialog;
 /*************************************************************************************
  *
  *                                  Hint!
@@ -51,7 +51,7 @@ import java.util.Random;
 public class HistorySearchActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    public static final int COM_NAME = 24;
+    public static final int COM_NAME = 18;
     public static final int PUR_NAME = 26;
     public static final int COM_MEMBER = 18;
     public static final int DAY = 2;
@@ -192,6 +192,37 @@ public class HistorySearchActivity extends AppCompatActivity
             return convertView;
         }
 
+        /*** 大馬コーディング 独自フィルター ***/
+//        public class MyFilter extends Filter {
+//
+//            @Override
+//            protected FilterResults performFiltering(CharSequence c) {
+//                List<ListItem> list = new ArrayList<>();
+//                for (int i = 0, size = getCount(); i < size; i++){
+//                    ListItem d = (ListItem) getItem(i);
+//                    if (d.gaiyou != null && d.gaiyou.contains(c)
+//                            || d.company != null && d.company.contains(c)
+//                            || d.date != null && d.date.contains(c)){
+//                        list.add(d);
+//                    }
+//                }
+//                FilterResults f = new FilterResults();
+//                f.count = list.size();
+//                f.values = list;
+//
+//                return f;
+//            }
+//
+//            @Override
+//            protected void publishResults(CharSequence charSequence, FilterResults results) {
+//                if (results.count > 0){
+//                    List<ListItem> list = (List<ListItem>) results.values;
+//
+//
+//
+//                }
+//            }
+//        }
     }
 
     SearchView searchView;
@@ -220,19 +251,25 @@ public class HistorySearchActivity extends AppCompatActivity
         listItems = new ArrayList<>();
         SQLiteOpenHelper listdeta = new DB(getApplicationContext());
         SQLiteDatabase db_list = listdeta.getReadableDatabase();
-        Cursor c_list = db_list.rawQuery("select * from v_reserve_member x, m_company y, m_purpose z where x.com_id=y.com_id and x.pur_id = z.pur_id", new String[]{});
+        Cursor c_list = db_list.rawQuery("select * from t_reserve x" +
+                " inner join t_member y on x.re_id = y.re_id" +
+                " inner join m_out_emp as a on y.mem_id = a.outemp_id" +
+                " inner join m_company as b on a.com_id = b.com_id" +
+                " inner join m_purpose as p on p.pur_id = x.pur_id", new String[]{});
         //会社用のデータベース
         while (c_list.moveToNext()) {
             ListItem li = new ListItem();
             li.setId(c_list.getLong(ID));
             li.setGaiyou(c_list.getString(GAIYOU));
             li.setDate(c_list.getString(DAY));
-            li.setCompanyMember(c_list.getString(COM_MEMBER));
-            li.setCompany(c_list.getString(COM_NAME));
-            li.setPurpose(c_list.getString(PUR_NAME));
+//            li.setCompanyMember(c_list.getString(COM_MEMBER));
+            li.setCompanyMember(c_list.getString(17));
+            li.setCompany(c_list.getString(25));
+            li.setPurpose(c_list.getString(27));
             // addするメソッドを書く
             listItems.add(li);
         }
+        c_list.close();
 
         //リストに表示するデータを準備
 //        String pupose[] = {"定例会","商談"};
@@ -271,6 +308,7 @@ public class HistorySearchActivity extends AppCompatActivity
             Log.d("call", c.getString(0) + " : " + c.getString(1));
             purpose.add(p);
         }
+        c.close();
 
         for(String s:strings){
             Log.d("call",s);
